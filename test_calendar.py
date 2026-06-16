@@ -1,0 +1,42 @@
+from google.oauth2.credentials import Credentials
+from googleapiclient.discovery import build
+from datetime import datetime, timezone
+import json
+
+creds = Credentials.from_authorized_user_file(
+    "/home/jesusm/.config/ags/credentials/token.json"
+)
+
+service = build("calendar", "v3", credentials=creds)
+
+now = datetime.now(timezone.utc).isoformat()
+
+events = service.events().list(
+    calendarId="primary",
+    timeMin=now,
+    maxResults=100,
+    singleEvents=True,
+    orderBy="startTime",
+).execute()
+
+result = []
+
+for event in events.get("items", []):
+    start = event["start"].get(
+        "dateTime",
+        event["start"].get("date", "")
+    )
+
+    end = event["end"].get(
+        "dateTime",
+        event["end"].get("date", "")
+    )
+
+    result.append({
+        "id": event.get("id", ""),
+        "title": event.get("summary", "No title"),
+        "start": start,
+        "end": end,
+    })
+
+print(json.dumps(result))

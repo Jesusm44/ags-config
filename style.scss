@@ -1,0 +1,38 @@
+// https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/theme/Adwaita/_colors-public.scss
+$fg-color: #{"@theme_fg_color"};
+$bg-color: #{"@theme_bg_color"};
+
+window.Bar {
+  background: transparent;
+  color: $fg-color;
+  font-weight: bold;
+  font-family: "JetBrainsMono Nerd Font";
+
+  > centerbox {
+    background: $bg-color;
+    border-radius: 10px;
+    margin: 8px;
+  }
+
+  button {
+    border-radius: 8px;
+    margin: 2px;
+  }
+
+    
+}
+
+.calendar-selected-day {
+        border-bottom: 2px solid rgb(93, 135, 240);
+}
+
+.event-bar {
+    min-height: 3px;
+    min-width: 18px;
+
+    margin-top: 2px;
+
+    border-radius: 999px;
+
+    background: #4f8cff;
+}
