@@ -71,7 +71,7 @@ export const condition = createComputed(() => {
         case 0: return "Clear Sky ☀"
         case 1: return "Mainly Clear 🌤"
         case 2: return "Partly Cloudy "
-        case 3: return "Overcast "
+        case 3: return "Overcast b  "
 
         case 45:
             case 48:
@@ -163,7 +163,7 @@ export const forecast = createComputed(() => {
                 break
 
             case 3:
-                icon = ""
+                icon = "  "
                 break
 
             case 45:

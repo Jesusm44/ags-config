@@ -11,10 +11,17 @@ service = build("calendar", "v3", credentials=creds)
 
 now = datetime.now(timezone.utc).isoformat()
 
+today = datetime.now().replace(
+    hour=0,
+    minute=0,
+    second=0,
+    microsecond=0,
+).astimezone(timezone.utc)
+
 events = service.events().list(
     calendarId="primary",
-    timeMin=now,
-    maxResults=100,
+    timeMin=today.isoformat(),
+    maxResults=1000,
     singleEvents=True,
     orderBy="startTime",
 ).execute()
@@ -39,4 +46,7 @@ for event in events.get("items", []):
         "end": end,
     })
 
-print(json.dumps(result))
+with open("/tmp/google-calendar.json", "w") as f:
+    json.dump(result, f)
+
+print(f"Guardados {len(result)} eventos /tmp/google-calendar.json")

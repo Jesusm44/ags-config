@@ -21,7 +21,8 @@ export const [viewDate, setViewDate] =
 export const [selectedDate, setSelectedDate] =
     createState(new Date())
 
-// export const [events, setEvents] =  createState<CalendarEvents[]>([])
+export const [editingEvent, setEditingEvent] = 
+    createState<any | null>(null)
 
 export function nextMonth() {
     const current = selectedDate()

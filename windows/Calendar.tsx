@@ -4,7 +4,10 @@ import MonthCalendar from "../widgets/calendar/MonthCalendar"
 import Weather from "../widgets/calendar/Weather"
 import Forecast from "../widgets/calendar/Forecast"
 import Events from "../widgets/calendar/Events"
-
+import CreateEvent from "../widgets/calendar/CreateEvent"
+import app from "ags/gtk4/app" ///
+import { Astal } from "ags/gtk4" /// 
+import EditEvent from "../widgets/calendar/EditEvent"
 
 
 export default function Calendar() {
@@ -12,10 +15,8 @@ export default function Calendar() {
         <window
             name="calendar"
             visible={calendarOpen}
-            onNotifyIsActive={({is_active}) => {
-                if (!is_active)
-                    setCalendarOpen(false)
-            }}
+            application={app}
+            keymode={Astal.Keymode.ON_DEMAND}
         >
             <box
                 orientation={1}
@@ -24,6 +25,10 @@ export default function Calendar() {
                 <Clock />
 
                 <MonthCalendar/>
+
+                <CreateEvent/>
+
+                <EditEvent/>
 
                 <Weather />
 

@@ -1,22 +1,63 @@
-import Gio from "gi://Gio"
-import { createComputed } from "ags"
+import Gio from "gi://Gio?version=2.0";
+import { createState } from "ags";
 
-export const googleEvents = createComputed(() => {
+print("googleCalendar.ts cargado")
+
+const [googleEvents, setGoogleEvents] = 
+    createState<any[]>([])
+
+// function loadEvents() {
+//     try {
+//         const file = Gio.file_new_for_path(
+//             "/tmp/google-calendar.json"
+//         )
+
+//         const [, bytes] = file.load_contents(null)
+
+//         const content = new TextDecoder().decode(bytes)
+
+//         setGoogleEvents(JSON.parse(content))
+//     } catch {
+//         setGoogleEvents([])
+//     }
+// }
+
+function loadEvents() {
     try {
-        const file = Gio.File.new_for_path(
+        const file = Gio.file_new_for_path(
             "/tmp/google-calendar.json"
         )
 
         const [, bytes] = file.load_contents(null)
 
-        const content = new TextDecoder()
-            .decode(bytes)
+        const content = new TextDecoder().decode(bytes)
 
-        return JSON.parse(content)
+        const parsed = JSON.parse(content)
+
+        setGoogleEvents(parsed)
+
     } catch {
-        return []
+        setGoogleEvents([])
     }
+}
+
+loadEvents()
+
+
+const file = Gio.file_new_for_path(
+    "/tmp/google-calendar.json"
+)
+
+const monitor = file.monitor_file(
+    Gio.FileMonitorFlags.NONE, null,
+)
+
+monitor.connect("changed", () => {
+    print("FILE CHANGED")
+    loadEvents()
 })
+
+export { googleEvents, loadEvents}
 
 export function eventCountForDay(
     year: number,
