@@ -37,7 +37,7 @@ export default function CreateEvent() {
 
         GLib.spawn_command_line_async(
             `/home/jesusm/.config/ags/venv/bin/python ` +
-            `/home/jesusm/.config/ags/create_event.py ` +
+            `/home/jesusm/.config/ags/Backend/create_event.py ` +
             `"${currentTitle}" ` +
             `"${isoDate}"`
         )

@@ -12,4 +12,3 @@ creds = flow.run_local_server(port=0)
 with open("/home/jesusm/.config/ags/credentials/token.json", "w") as f:
     f.write(creds.to_json())
 
-print("Token creado correctamente")

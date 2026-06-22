@@ -19,4 +19,3 @@ service.events().delete(
     eventId=event_id,
 ).execute()
 
-print(f"Deleted: {event_id}")

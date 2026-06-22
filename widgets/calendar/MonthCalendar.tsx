@@ -6,6 +6,7 @@ import {
     setViewDate,
 } from "../../services/calendar"
 import { eventCountForDay, googleEvents} from "../../services/googleCalendar"
+import { isHoliday } from "../../services/holidays"
 import { Gtk } from "ags/gtk4"
 
 
@@ -234,18 +235,33 @@ export default function MonthCalendar() {
                                                 }
                                                 label={String(day.day)}
                                             />
-                                            {day.currentMonth &&
-                                                eventCountForDay(
-                                                    cellDate.getFullYear(),
-                                                    cellDate.getMonth(),
-                                                    cellDate.getDate(),
-                                                ) > 0 && (
+                                            {day.currentMonth && (
+                                                <box 
+                                                    orientation={1}
+                                                    spacing={2}
+                                                >
                                                     <box
                                                         cssClasses={["event-bar"]}
-                                                        visible={true}
+                                                        visible = {
+                                                            eventCountForDay(
+                                                                cellDate.getUTCFullYear(),
+                                                                cellDate.getMonth(),
+                                                                cellDate.getDate(),
+                                                            ) > 0
+                                                        }
                                                     />
-                                                )
-                                            }
+                                                    <box 
+                                                        cssClasses={["holiday-bar"]}
+                                                        visible = {
+                                                            !!isHoliday(
+                                                                cellDate.getFullYear(),
+                                                                cellDate.getMonth(),
+                                                                cellDate.getDate(),
+                                                            )
+                                                        }
+                                                    />
+                                                </box>
+                                            )}
                                         </box>
                                     </button>
                                 )

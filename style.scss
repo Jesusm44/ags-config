@@ -29,8 +29,9 @@ window.Bar {
 .event-bar {
     min-height: 3px;
     min-width: 18px;
-
+    
     margin-top: 2px;
+    margin-bottom: 2px;
 
     border-radius: 999px;
 
@@ -87,4 +88,42 @@ button:active {
 
 .calendar-day:hover {
     background: rgba(255,255,255,0.08);
+}
+
+.next-event {
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.05);
+}
+
+.next-event-title {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.next-event-name {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.holiday-bar{
+    min-width: 18px;
+    min-height: 3px;
+
+    margin-top: 2px;
+    margin-bottom: 2px;
+    
+    border-radius: 999px;
+
+    background: #1b7b3f;
+}
+
+.holiday-label{
+    color:#252625;
+
+    font-weight:bold;
+
+    font-size:15px;
+
+    margin:8px 0;
 }

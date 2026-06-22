@@ -39,4 +39,3 @@ update = service.events().update(
     body=event,
 ).execute()
 
-print(f"Update: {update['id']}")

@@ -49,4 +49,3 @@ for event in events.get("items", []):
 with open("/tmp/google-calendar.json", "w") as f:
     json.dump(result, f)
 
-print(f"Guardados {len(result)} eventos /tmp/google-calendar.json")

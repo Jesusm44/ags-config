@@ -2,13 +2,11 @@ import { createComputed, For } from "ags"
 import { googleEvents } from "../../services/googleCalendar"
 import { selectedDate } from "../../services/calendar"
 import GLib from "gi://GLib?version=2.0"
-import {
-    setEditingEvent
-} from "../../services/calendar"
+import { Gtk } from "ags/gtk4"
+
 
 export default function Events() {
     const events = createComputed(() =>{
-        print("Recompute", googleEvents().length)
 
         return googleEvents().filter((event: any) => {
             const eventDate = new Date(event.start)
@@ -24,25 +22,22 @@ export default function Events() {
 
     return (
         <box orientation={1}>
-            <box orientation={1} spacing={5}>
+            <box 
+                orientation={1} 
+                spacing={5}
+                halign={Gtk.Align.CENTER}
+            >
                 <For each={events}>
                     {(event: any) => (
                       <box spacing={5}>
                         <label 
                             label={`${event.start} | ${event.title}`}
                         />
-                        <button 
-                            onClicked={() => {
-                                setEditingEvent(event)
-                            }}
-                        >
-                            <label label="󰏫"/>
-                        </button>
                         <button
                             onClicked={() => {
                                 const cmd = 
                                     "/home/jesusm/.config/ags/venv/bin/python " +
-                                    "/home/jesusm/.config/ags/delete_event.py " +
+                                    "/home/jesusm/.config/ags/Backend/delete_event.py " +
                                     event.id
                                 GLib.spawn_command_line_async(cmd)
 

@@ -13,6 +13,5 @@ export function toggleBluetooth() {
     try {
         bluetooth.toggle()
     } catch (err) {
-        print(`Bluetooth error: ${err}`)
     }
 }

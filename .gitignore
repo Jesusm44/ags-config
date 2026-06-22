@@ -1,6 +1,42 @@
-credentials/
-venv/
-.venv/
+# Node
 node_modules/
+
+# Python
+venv/
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
 .env
 .env.*
+
+# VS Code
+.vscode/
+
+# TypeScript
+*.tsbuildinfo
+
+# Generated files
+dist/
+build/
+
+# Google OAuth
+credentials/
+
+# OS
+.DS_Store
+Thumbs.db
+
+#Python cache
+.pytest_cache/
+.mypy_cache/
+
+#Virtual enviroments
+.venv/

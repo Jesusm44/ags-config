@@ -1,26 +1,9 @@
 import Gio from "gi://Gio?version=2.0";
 import { createState } from "ags";
 
-print("googleCalendar.ts cargado")
 
 const [googleEvents, setGoogleEvents] = 
     createState<any[]>([])
-
-// function loadEvents() {
-//     try {
-//         const file = Gio.file_new_for_path(
-//             "/tmp/google-calendar.json"
-//         )
-
-//         const [, bytes] = file.load_contents(null)
-
-//         const content = new TextDecoder().decode(bytes)
-
-//         setGoogleEvents(JSON.parse(content))
-//     } catch {
-//         setGoogleEvents([])
-//     }
-// }
 
 function loadEvents() {
     try {
@@ -34,7 +17,8 @@ function loadEvents() {
 
         const parsed = JSON.parse(content)
 
-        setGoogleEvents(parsed)
+
+        setGoogleEvents([...parsed])
 
     } catch {
         setGoogleEvents([])
@@ -53,7 +37,6 @@ const monitor = file.monitor_file(
 )
 
 monitor.connect("changed", () => {
-    print("FILE CHANGED")
     loadEvents()
 })
 

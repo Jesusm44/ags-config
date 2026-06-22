@@ -5,9 +5,12 @@ import Weather from "../widgets/calendar/Weather"
 import Forecast from "../widgets/calendar/Forecast"
 import Events from "../widgets/calendar/Events"
 import CreateEvent from "../widgets/calendar/CreateEvent"
-import app from "ags/gtk4/app" ///
-import { Astal } from "ags/gtk4" /// 
-import EditEvent from "../widgets/calendar/EditEvent"
+import NextEvent from "../widgets/calendar/NextEvent"
+import Holiday from "../widgets/calendar/Holiday"
+
+
+import app from "ags/gtk4/app" 
+import { Astal } from "ags/gtk4" 
 
 
 export default function Calendar() {
@@ -26,13 +29,15 @@ export default function Calendar() {
 
                 <MonthCalendar/>
 
-                <CreateEvent/>
+                <NextEvent/>
 
-                <EditEvent/>
+                <CreateEvent/>
 
                 <Weather />
 
                 <Forecast/>
+
+                <Holiday/>
 
                 <Events/>
             </box>
