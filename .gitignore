@@ -40,3 +40,4 @@ Thumbs.db
 
 #Virtual enviroments
 .venv/
+ags.log

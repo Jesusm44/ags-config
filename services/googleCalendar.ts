@@ -1,9 +1,10 @@
 import Gio from "gi://Gio?version=2.0";
 import { createState } from "ags";
+import { CalendarEvents } from "./calendar";
 
 
 const [googleEvents, setGoogleEvents] = 
-    createState<any[]>([])
+    createState<CalendarEvents[]>([])
 
 function loadEvents() {
     try {
@@ -47,7 +48,7 @@ export function eventCountForDay(
     month: number,
     day: number,
 ) {
-    return googleEvents().filter((event: any) => {
+    return googleEvents().filter((event: CalendarEvents) => {
         const date = new Date(event.start)
 
         return (
