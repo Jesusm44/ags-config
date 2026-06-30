@@ -51,10 +51,6 @@ window.Bar {
     font-weight: normal;
 }
 
-// .calendar-month {
-//     min-width: 77px;
-// }
-
 button {
     background: transparent;
     border: none;
@@ -126,4 +122,74 @@ button:active {
     font-size:15px;
 
     margin:8px 0;
+}
+
+.bar-left{
+    padding: 0 8px;
+}
+
+.bar-icon-button {
+    min-width: 5px;
+    min-height: 5px;
+
+    border-radius: 999px;
+}
+
+.bar-icon-button label {
+    color: white;
+    font-size: 16px;
+}
+
+switch {
+    min-width: 20px;
+    min-height: 10px;
+}
+
+switch slider {
+    min-width: 14px;
+    min-height: 14px;
+}
+
+switch {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+}
+
+switch:checked {
+    background: #6857e9;
+}
+
+switch slider {
+    background: rgb(203, 200, 200);
+    border-radius: 999px;
+}
+
+.bt-device {
+    padding: 6px 8px;
+    border-radius: 10px;
+}
+
+.bt-device:hover {
+    background: rgba(255,255,255,0.06);
+}
+
+.bt-device-name {
+    font-size: 13px;
+    opacity: 600;
+}
+
+.bt-device-status{
+    font-size: 11px;
+    opacity: 0.65;
+}
+
+.bt-device-menu {
+    min-width: 22px;
+    min-height: 22px;
+    padding: 0;
+}
+
+.bt-icon-button {
+    color: rgb(48, 47, 47);
+    font-size: 16px;
 }

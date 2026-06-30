@@ -9,6 +9,7 @@ import { startNotifications }
 GLib.spawn_command_line_async(
     "/home/jesusm/.config/ags/scripts/update-calendar.sh"
 )
+import Bluetooth from "./windows/Bluetooth"
 
 
 app.start({
@@ -18,5 +19,6 @@ app.start({
 
     startNotifications()
     Calendar()
+    Bluetooth()
   },
 })

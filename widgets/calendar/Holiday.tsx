@@ -1,5 +1,5 @@
 import { createComputed } from "gnim";
-import { selectedDate, } from "../../services/calendar"
+import { selectedDate } from "../../services/calendar";
 import { isHoliday } from "../../services/holidays";
 import Gtk from "gi://Gtk?version=4.0";
 
@@ -10,21 +10,21 @@ export default function Holiday() {
             selectedDate().getMonth(),
             selectedDate().getDate()
         )
-    )
+    );
 
-    return(
+    return (
         <box
             visible={createComputed(() => !!holiday())}
             halign={Gtk.Align.CENTER}
         >
-            <label 
+            <label
                 cssClasses={["holiday-label"]}
-                label={createComputed(() => 
+                label={createComputed(() =>
                     holiday()
-                    ? `󰃭 ${holiday()!.name}`
-                    : ""
+                        ? `󰃭 ${holiday()!.name}`
+                        : ""
                 )}
             />
         </box>
-    )
+    );
 }

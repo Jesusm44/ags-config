@@ -47,6 +47,7 @@ monitor.connect("changed", () => {
     loadHolidays()
 })
 
+
 export { holidays, loadHolidays}
 
 export function isHoliday(
@@ -54,15 +55,17 @@ export function isHoliday(
     month: number,
     day: number,
 ): Holiday | null {
-    return(
+    return (
         holidays().find((holiday) => {
-            const date = new Date(holiday.date)
+            const [y, m, d] = holiday.date
+                .split("-")
+                .map(Number);
 
-            return(
-                date.getFullYear() === year &&
-                date.getMonth() === month &&
-                date.getDate() === day
-            )
+            return (
+                y === year &&
+                m - 1 === month &&
+                d === day
+            );
         }) ?? null
-    )
+    );
 }
